@@ -1,0 +1,45 @@
+Deep Learning with Python
+
+After reading one page I feel the agitation to look at my phone and do something else.
+Dont do that!!! Stay FOCUSED
+
+
+#### Chapter 2
+
+Dont have a solid understanding of the kernel trick or what it solves except that it allows the computation of a hyperplane in a higher dimensional space feasible
+
+Gradient Boosting can be applied to any machine learning model. Succesive improvements of a model
+
+Grad boosted trees are almost strictly better than random forests for non perceptual data
+
+You may ask, if the crux of the issue is to have multiple successive layers of representations, could shallow methods be applied repeatedly to emulate the effects of deep learning? In practice, there are fast-diminishing returns to successive applications of shallow-learning methods, because the optimal first representation layer in a three-layer model isn’t the optimal first layer in a one-layer or two-layer model. What is transformative about deep learning is that it allows a model to learn all layers of representation jointly, at the same time, rather than in succession (greedily, as it’s called). With joint feature learning, whenever the model adjusts one of its internal features, all other features that depend on it automatically adapt to the change, without requiring human intervention. Everything is supervised by a single feedback signal: every change in the model serves the end goal. This is much more powerful than greedily stacking shallow models, because it allows for complex, abstract representations to be learned by breaking them down into long series of intermediate spaces (layers); each space is only a simple transformation away from the previous one.
+
+Need to reivew momentum and types of optimizers
+
+Reivew symbolic differentiation
+
+
+
+
+#### chapter 3
+
+The topology of a network defines a hypothesis space. You may remember that in chapter 1, we defined machine learning as “searching for useful representations of some input data, within a predefined space of possibilities, using guidance from a feedback signal.” 
+
+Choosing the right objective function for the right problem is extremely important: your network will take any shortcut it can, to minimize the loss; so if the objective doesn’t fully correlate with success for the task at hand, your network will end up doing things you may not have wanted.
+
+The input data is vectors, and the labels are scalars (1s and 0s): this is the easiest setup you’ll ever encounter. A type of network that performs well on such a problem is a simple stack of fully connected (Dense) layers with relu activations: Dense(16, activation='relu').
+
+You can intuitively understand the dimensionality of your representation space as “how much freedom you’re allowing the network to have when learning internal representations.” Having more hidden units (a higher-dimensional representation space) allows your network to learn more-complex representations, but it makes the network more computationally expensive and may lead to learning unwanted patterns (patterns that will improve performance on the training data but not on the test data).
+
+Without an activation function like relu (also called a non-linearity), the Dense layer would consist of two linear operations—a dot product and an addition:
+So the layer could only learn linear transformations (affine transformations) of the input data: the hypothesis space of the layer would be the set of all possible linear transformations of the input data into a 16-dimensional space. Such a hypothesis space is too restricted and wouldn’t benefit from multiple layers of representations, because a deep stack of linear layers would still implement a linear operation: adding more layers wouldn’t extend the hypothesis space.
+In order to get access to a much richer hypothesis space that would benefit from deep representations, you need a non-linearity, or activation function.
+
+The rmsprop optimizer is generally a good enough choice, whatever your problem. That’s one less thing for you to worry about.
+
+
+
+
+
+
+
